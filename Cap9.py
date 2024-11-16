@@ -1,4 +1,4 @@
-# 1 =============================================================================================
+# 9.1 =============================================================================================
 
 class Restaurant:
     def __init__(self, restaurant_name, cuisine_type):
@@ -16,7 +16,7 @@ saborear = Restaurant("Saborear", "Pizzaria")
 saborear.describe_restaurant()
 saborear.open_restaurant()
 
-# 2 ===============================================================================================
+# 9.2 ===============================================================================================
 saborear = Restaurant("Saborear", "Pizzaria")
 saborear.describe_restaurant()
 
@@ -26,7 +26,7 @@ sushiHouse.describe_restaurant()
 cancacoBurguer = Restaurant("Cangaço Burger", "Haburgueria")
 cancacoBurguer.describe_restaurant()
 
-# 3 =================================================================================================
+# 9.3 =================================================================================================
 
 class User:
     def __init__(self, first_name, last_name, user_nick, user_email, user_passWord):
@@ -204,7 +204,7 @@ admin_user = Admin("João", "Silva", "adminjoao", "joao.silva@example.com", "sen
 
 admin_user.show_privileges()
 
-# 9.8 =========================================================================================
+# 9.8 ==============================================================================================
 
 class Privileges():
     def __init__(self, privileges):
@@ -216,15 +216,82 @@ class Privileges():
             print(privilege)
 
 class Admin(User):
-    def __init__(self, first_name, last_name, user_nick, user_email, user_passWord):
+    def __init__(self, first_name, last_name, user_nick, user_email, user_passWord, privileges):
         super().__init__(first_name, last_name, user_nick, user_email, user_passWord)
-
-    privileges = ["pode adicionar postagens", "pode deletar postagens", "pode banir usuários"]
-    admin_privileges = Privileges(privileges)
-
-    
+        self.privileges = Privileges(privileges)
 
 # Criando uma instância de Admin com uma lista de privilégios
-admin_user = Admin("João", "Silva", "adminjoao", "joao.silva@example.com", "senha123")
-admin_user.admin_privileges.show_privileges()
+admin_user = Admin("João", "Silva", "adminjoao", "joao.silva@example.com", "senha123",
+                   ["pode adicionar postagens", "pode deletar postagens", "pode banir usuários"])
+
+admin_user.privileges.show_privileges()
+
+# 9.9 ==========================================================================================
+
+class Car:
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0
+
+    def get_descriptive_name(self):
+        long_name = str(self.year) + " " + self.make + " " + self.model
+        return long_name.title()
+
+    def read_odometer(self):
+        print("This cas has " + str(self.odometer_reading) + " miles on it.")
+
+    def update_odometer(self, mileage):
+        if mileage >= self.odometer_reading:
+            self.odometer_reading = mileage
+        else:
+            print("You can't roll back an odometer!")
+
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+
+    def fill_gas_tank(self):
+        print("This car needs a gas tank!")
+
+class Battery:
+    def __init__(self, battery_size=70):
+        self.battery_size = battery_size
+
+    def describe_battery(self):
+        print("This car has a " + str(self.battery_size) + "-kWh battery.")
+
+    def get_range(self):
+        if self.battery_size == 70:
+            range = 240
+        elif self.battery_size == 85:
+            range = 270
+
+        message = "This car can go approximately " + str(range) + \
+                  " miles on a full charge."
+        print(message)
     
+    def upgrade_battery(self):
+       if self.battery_size != 85:
+           self.battery_size = 85
+
+class ElectricCar(Car):
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        self.battery = Battery()
+
+    def fill_gas_tank(self):
+        print("This car doesn\'t need a gas tank!")
+
+tesla = ElectricCar("Tesla", "CyberTruck", "2022")
+
+tesla.battery.get_range()
+tesla.battery.upgrade_battery()
+tesla.battery.get_range()
+
+# 9.10 =========================================================================================
+
+from restaurant import Restaurant
+
+estrelaSorveteria = Restaurant("Estrela Sorveteria", "Sorveteria")
+estrelaSorveteria.describe_restaurant()
