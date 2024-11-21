@@ -295,3 +295,60 @@ from restaurant import Restaurant
 
 estrelaSorveteria = Restaurant("Estrela Sorveteria", "Sorveteria")
 estrelaSorveteria.describe_restaurant()
+
+#9.11 ===========================================================================================
+
+from user_management import Admin
+
+admin_user = Admin("Maria", "Oliveira", "adminmaria", "maria.oliveira@example.com", "senha456",
+                   ["pode editar postagens", "pode bloquear usuários", "pode acessar relatórios"])
+
+admin_user.privileges.show_privileges()
+
+#9.12 ===========================================================================================
+
+from privilegesAdmin import Admin
+
+admin_user2 = Admin("Carlos", "Santos", "admincarlos", "carlos.santos@example.com", "senha789",
+                    ["pode criar usuários", "pode redefinir senhas", "pode moderar comentários"])
+
+admin_user2.privileges.show_privileges()
+
+# 9.13 ===============================================================================================
+from collections import OrderedDict
+
+ordered_glossario = OrderedDict()
+ordered_glossario['Chapter_1'] = 'numbers'
+ordered_glossario['Chapter_2'] = 'names_cases'
+ordered_glossario['Chapter_3'] = 'list'
+
+for key, value in ordered_glossario.items():
+    print(f'At {key} was studied {value}')
+
+# 9.14 ===============================================================================================
+from random import randint
+
+class Die:
+    def __init__(self, sides = 6):
+        self.sides = sides
+    
+    def roll_die(self):
+        val = randint(1, self.sides)
+        print(f'This is a d{self.sides} and you rolled: {val}')
+    
+d6 = Die()
+d10 = Die(10)
+d20 = Die(20)
+
+for i in range(d6.sides + 1):
+    d6.roll_die()
+
+for i in range(d10.sides + 1):
+    d10.roll_die()
+
+for i in range(d20.sides + 1):
+    d20.roll_die()
+
+# 9.15 ================================================================================================
+
+#PESQUISA

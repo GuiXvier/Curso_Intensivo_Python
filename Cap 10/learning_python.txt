@@ -1,0 +1,7 @@
+
+No livro Curso Intensivo de Python, eu aprendi a trabalhar com arquivos, desde abrir e 
+ler o conteudo inteiro ou linha a linha, ate criar listas com suas linhas para manipulacao 
+posterior. Explorei como lidar com paths de arquivos e realizar operacoes como buscar 
+informacoes especificas (ex.: verificar se uma data de aniversario esta contida na 
+sequencia do numero pi). Alem disso, foram abordadas tecnicas para trabalhar com grandes 
+volumes de dados, como arquivos com milhoes de digitos.
