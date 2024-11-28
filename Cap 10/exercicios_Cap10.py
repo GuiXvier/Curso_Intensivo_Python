@@ -70,3 +70,91 @@ with open(guestBook_file, 'a') as guestList:
             continue
         else:
             break
+# 10.6 – Adição:==================================================================================
+
+try:
+    val1 = int(input("Digite o primeiro número: "))
+    val2 = int(input("Digite o segundo número: "))
+    print(f'{val1} + {val2} = {val1 + val2}')
+except ValueError:
+    print("Ops, você não digitou valores válidos")
+
+# 10.7 – Calculadora para adição::============================================
+while True:
+    try:
+        val1 = int(input("Digite o primeiro número: "))
+        val2 = int(input("Digite o segundo número: "))
+        print(f'{val1} + {val2} = {val1 + val2}')
+    except ValueError:
+        print("Ops, você não digitou valores válidos")
+
+# 10.8 – Gatos e cachorros:=================================================
+
+files_names = ['dogs.txt', 'cats.txt', 'joaozinho.txt']
+
+def imprimeArquivo(nomeArquivo):
+    with open(nomeArquivo, 'r') as fl_obj:
+        content = fl_obj.read()
+        print(content)
+
+for name in files_names: 
+    try:
+        imprimeArquivo(name)
+        print("")
+    except FileNotFoundError:
+        print(f'{name} nao encontrado')
+
+# 10.9 – Gatos e cachorros silenciosos:====================================
+
+files_names = ['dogs.txt', 'cats.txt', 'joaozinho.txt']
+
+def imprimeArquivo(nomeArquivo):
+    with open(nomeArquivo, 'r') as fl_obj:
+        content = fl_obj.read()
+        print(content)
+
+for name in files_names: 
+    try:
+        imprimeArquivo(name)
+        print("")
+    except FileNotFoundError:
+        pass
+
+# 10.10 – Palavras comuns: ==================================================
+
+def contadorPalavras(nomeArquivo, palavra):
+    with open(nomeArquivo, encoding = "utf-8") as file_object:
+        content = file_object.read()
+        words = content.split()
+        count = 0
+
+        for w in words:
+            if w == palavra: count += 1
+        
+        print(f'A palavra "{palavra}" apareceu {count} vezes no arquivo {nomeArquivo}')
+
+frank = 'frankenstein.txt'
+moby = 'mobyDick.txt'
+joao = 'joazinho.txt'
+
+try:
+    contadorPalavras(frank, 'the')
+    contadorPalavras(moby, 'the')
+    contadorPalavras(joao, 'the')
+except FileNotFoundError:
+    pass
+
+# 10.11 – Número favorito: =================================================
+
+import json
+
+numFav = int(input("Digite seu numero favorito: "))
+
+file_name = 'fav.json'
+
+with open(file_name, 'w') as f_obj:
+    json.dump(numFav, f_obj)
+
+with open(file_name) as f_obj:
+    number = json.load(f_obj)
+    print(f'Seu numero favorito é {number}')
